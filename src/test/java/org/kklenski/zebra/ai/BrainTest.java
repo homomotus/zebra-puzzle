@@ -32,7 +32,7 @@ public abstract class BrainTest {
 	protected abstract Brain getBrain();
 	
 	@Test
-	public void testClassicPuzzle() {
+	public void testSolveClassicPuzzle() {
 		Collection<House[]> solutions = getBrain().solve(getClassicPuzzle());
 		
 		Assert.assertEquals(1, solutions.size());
@@ -42,7 +42,7 @@ public abstract class BrainTest {
 	}
 
 	@Test
-	public void testNoSolutionCase() {
+	public void testSolveNoSolutionCase() {
 		Puzzle puzzle = getClassicPuzzle();
 		puzzle.getRules().add(new Rule(SAME, new HouseProperty("pet", "Cobra"), null));
 		
@@ -52,7 +52,7 @@ public abstract class BrainTest {
 	}
 	
 	@Test
-	public void testMultipleSolutionCase() {
+	public void testSolveMultipleSolutionCase() {
 		Puzzle puzzle = getClassicPuzzle();
 		puzzle.getRules().add(new Rule(SAME, new HouseProperty("religion", "Buddhist"), null));
 		
