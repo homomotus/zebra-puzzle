@@ -1,5 +1,10 @@
 package org.kklenski.zebra;
 
+import java.util.Collection;
+
+import org.kklenski.zebra.io.PuzzleReader;
+import org.kklenski.zebra.model.House;
+
 
 /**
  * 
@@ -9,10 +14,10 @@ package org.kklenski.zebra;
 public class Launcher {
 	
 	public static void main(String[] args) {
-		/*PuzzleLoader loader = new PuzzleLoader();
-		Puzzle puzzle = Puzzle.loadFromCSV(csv);
+		/*PuzzleLoader loader = new CSVPuzzleLoader();
+		Puzzle puzzle = .loadFromCSV(csv);
 		Brain brain = new BruteForceBrain();
-		Street street = brain.solve(puzzle);
+		Collection<House[]> solutions = brain.solve(puzzle);
 		String xml = Puzzle.saveToXML(puzzle);*/
 	}
 
