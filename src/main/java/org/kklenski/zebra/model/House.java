@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class House {
 	
-	//FIXME add this constraint to doc
+	//FIXME add this constraint to doc, better remove this from model object
 	private static final String PROP_POSITION = "position";
 
 	private Map<String, String> props = new HashMap<String, String>();
@@ -34,5 +34,10 @@ public class House {
 
 	public Map<String, String> getProps() {
 		return props;
+	}
+	
+	@Override
+	public String toString() {
+		return props.toString();
 	}
 }

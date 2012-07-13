@@ -51,6 +51,10 @@ public class Rule {
 		this.prop2 = prop2;
 	}
 	
+	public Rule(AssociationType type, HouseProperty prop) {
+		this(type, prop, null);
+	}
+	
 	public AssociationType getType() {
 		return type;
 	}

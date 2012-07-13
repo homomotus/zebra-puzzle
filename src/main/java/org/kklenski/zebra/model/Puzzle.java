@@ -6,7 +6,7 @@ import java.util.Collection;
  * Zebra puzzle formalized problem statement.
  * 
  * @author kklenski
- *
+ * 
  */
 public class Puzzle {
 	private Collection<Rule> rules;

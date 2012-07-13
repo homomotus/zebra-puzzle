@@ -10,28 +10,59 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.kklenski.zebra.model.House;
 import org.kklenski.zebra.model.Puzzle;
 import org.kklenski.zebra.model.Rule;
 import org.kklenski.zebra.model.Rule.HouseProperty;
 
+/**
+ * Abstract {@link Brain} test that can be used to test any {@link Brain}
+ * implementation that returns all possible solutions to the puzzle.
+ * 
+ * @author kklenski
+ * 
+ */
 public abstract class BrainTest {
 	
-	private Brain brain;
-
-	@Before
-	public void setUp() throws Exception {
-		brain = getBrain();
-	}
-
-	public abstract Brain getBrain();
+	/**
+	 * Override in descendant class to specify which brain to test.
+	 * @return the brain instance to test
+	 */
+	protected abstract Brain getBrain();
 	
 	@Test
 	public void testClassicPuzzle() {
-		// FIXME unit test for no solution
-		// FIXME unit test for multiple solutions
+		Collection<House[]> solutions = getBrain().solve(getClassicPuzzle());
+		
+		Assert.assertEquals(1, solutions.size());
+		House[] houses = solutions.iterator().next();
+		Assert.assertTrue(houses[4].getProps().get("pet").equals("Zebra"));
+		Assert.assertTrue(houses[0].getProps().get("drink").equals("Water"));
+	}
+
+	@Test
+	public void testNoSolutionCase() {
+		Puzzle puzzle = getClassicPuzzle();
+		puzzle.getRules().add(new Rule(SAME, new HouseProperty("pet", "Cobra"), null));
+		
+		Collection<House[]> solutions = getBrain().solve(puzzle);
+		
+		Assert.assertEquals(0, solutions.size());
+	}
+	
+	@Test
+	public void testMultipleSolutionCase() {
+		Puzzle puzzle = getClassicPuzzle();
+		puzzle.getRules().add(new Rule(SAME, new HouseProperty("religion", "Buddhist"), null));
+		
+		Collection<House[]> solutions = getBrain().solve(puzzle);
+		
+		Assert.assertEquals(5, solutions.size());
+	}
+	
+	
+	private Puzzle getClassicPuzzle() {
 		List<Rule> rules = new ArrayList<Rule>();
 		rules.add(new Rule(SAME, new HouseProperty("nationality", "English"), new HouseProperty("color", "Red")));
 		rules.add(new Rule(SAME, new HouseProperty("nationality", "Spaniard"), new HouseProperty("pet", "Dog")));
@@ -49,12 +80,7 @@ public abstract class BrainTest {
 		rules.add(new Rule(NEXT_TO, new HouseProperty("color", "Blue"),	new HouseProperty("nationality", "Norwegian")));
 		rules.add(new Rule(SAME, new HouseProperty("drink", "Water"), null));
 		rules.add(new Rule(SAME, new HouseProperty("pet", "Zebra"), null));
-
-		Collection<House[]> solutions = brain.solve(new Puzzle(rules, 5));
 		
-		Assert.assertEquals(1, solutions.size());
-		House[] houses = solutions.iterator().next();
-		Assert.assertTrue(houses[4].getProps().get("pet").equals("Zebra"));
-		Assert.assertTrue(houses[0].getProps().get("drink").equals("Water"));
+		return new Puzzle(rules, 5);
 	}
 }

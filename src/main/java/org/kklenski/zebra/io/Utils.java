@@ -10,16 +10,16 @@ import org.kklenski.zebra.model.House;
 public class Utils {
 	
 	/**
-	 * Prints <code>houses</code> array to {@link System#out}
-	 * @param houses 
+	 * Prints solution to {@link System#out}
+	 * @param solution 
 	 */
-	public void print(House[] houses) {
+	public void print(House[] solution) {
 		Set<String> propKeys = new HashSet<String>();
-		for (House house : houses) {
+		for (House house : solution) {
 			propKeys.addAll(house.getProps().keySet());
 		}
 
-		for (House house : houses) {
+		for (House house : solution) {
 			for (String key : propKeys) {
 				if (!house.getProps().containsKey(key)) {
 					
@@ -28,9 +28,9 @@ public class Utils {
 			}
 		}
 
-		for (int i = 0; i < houses.length; i++) {
+		for (int i = 0; i < solution.length; i++) {
 			Map<String, String> props = new TreeMap<String, String>(
-					houses[i].getProps());
+					solution[i].getProps());
 			System.out.print(String.format("House %d:", i));
 			for (String value : props.values()) {
 				System.out.print(String.format("%20s", value));
