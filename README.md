@@ -9,5 +9,5 @@ Usage
     git clone https://github.com/MATPOCOB/zebra-puzzle.git
     cd zebra-puzzle
     mvn clean install
-    cd target\classes
-    java org.kklenski.zebra.Launcher < ..\..\src\main\resources\puzzle.csv > solutions.xml
+    cd target/classes
+    java org.kklenski.zebra.PuzzleSolver < ../../samples/puzzle.csv > solutions.xml
