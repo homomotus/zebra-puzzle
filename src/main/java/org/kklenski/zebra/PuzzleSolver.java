@@ -25,7 +25,7 @@ import org.kklenski.zebra.model.Puzzle;
  * @author kklenski
  * 
  */
-public class Launcher {
+public class PuzzleSolver {
 	
 	public static void main(String[] args) {
 		PuzzleReader reader = new CSVPuzzleReader();
