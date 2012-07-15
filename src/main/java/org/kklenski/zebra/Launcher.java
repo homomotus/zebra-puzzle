@@ -15,10 +15,12 @@ import org.kklenski.zebra.io.XMLSolutionWriter;
 import org.kklenski.zebra.model.House;
 import org.kklenski.zebra.model.Puzzle;
 
-
-
 /**
- * Command-line launcher for solving zebra puzzles.
+ * Command-line launcher for solving zebra puzzles. Accepts puzzle definition
+ * input in CSV format from {@link System#in} and serializes found solutions to
+ * {@link System#out} in XML format.
+ * 
+ * @see CSVPuzzleReader CSV format details
  * 
  * @author kklenski
  * 
@@ -28,15 +30,15 @@ public class Launcher {
 	public static void main(String[] args) {
 		PuzzleReader reader = new CSVPuzzleReader();
 		InputStream in = System.in;
-		Puzzle puzzle;
+		Puzzle puzzle = null;
 		try {
 			puzzle = reader.read(in);
 		} catch (IOException e) {
 			System.out.println("Puzzle loading error: "+e.getMessage());
-			return;
+			System.exit(-10);
 		} catch (PuzzleFormatException e) {
 			System.out.println("Please check puzzle format: "+e.getMessage());
-			return;
+			System.exit(-1);
 		}
 		Brain brain = new BruteForceBrain();
 		Collection<House[]> solutions = brain.solve(puzzle);
