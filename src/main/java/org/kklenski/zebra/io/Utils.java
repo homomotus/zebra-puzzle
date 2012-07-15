@@ -1,5 +1,7 @@
 package org.kklenski.zebra.io;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +15,7 @@ public class Utils {
 	 * Prints solution to {@link System#out}
 	 * @param solution 
 	 */
-	public void print(House[] solution) {
+	public static void print(House[] solution) {
 		Set<String> propKeys = new HashSet<String>();
 		for (House house : solution) {
 			propKeys.addAll(house.getProps().keySet());
@@ -36,6 +38,32 @@ public class Utils {
 				System.out.print(String.format("%20s", value));
 			}
 			System.out.println();
+		}
+	}
+	
+	/**
+	 * Safely closes input stream.
+	 * @param in
+	 */
+	public static void safeClose(InputStream in) {
+		try {
+			if (in != null) {
+				in.close();
+			}
+		} catch (Exception ignore) {
+		}
+	}
+	
+	/**
+	 * Safely closes input stream.
+	 * @param in
+	 */
+	public static void safeClose(OutputStream out) {
+		try {
+			if (out != null) {
+				out.close();
+			}
+		} catch (Exception ignore) {
 		}
 	}
 	

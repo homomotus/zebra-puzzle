@@ -15,6 +15,7 @@ import org.kklenski.zebra.model.Rule;
 import org.kklenski.zebra.model.Rule.AssociationType;
 
 import static org.kklenski.zebra.io.CSVPuzzleReader.*;
+import static org.kklenski.zebra.io.Utils.safeClose;
 
 public class CSVPuzzleReaderTest {
 
@@ -37,7 +38,7 @@ public class CSVPuzzleReaderTest {
 		data.append(numHouses).append(EOL);
 		data.append("SAME").append(delim).append("pet").append(delim).append("Zebra").append(delim).append("nationality").append(delim).append("Japanese").append(EOL);
 		data.append("NEXT_TO").append(delim).append("drink").append(delim).append("Vodka").append(delim).append("nationality").append(delim).append("Japanese").append(EOL);
-		data.append("SAME").append(delim).append("drink").append(delim).append("Water");
+		data.append("SAME").append(delim).append("drink").append(delim).append("Water").append(EOL);
 		InputStream in = new ByteArrayInputStream(data.toString().getBytes(charset));
 		
 		try {
@@ -113,13 +114,6 @@ public class CSVPuzzleReaderTest {
 	@Test
 	public void testReadDifferentDelimiter() throws IOException, PuzzleFormatException {
 		testRead(DEFAULT_CHARSET, ',');
-	}
-	
-	private void safeClose(InputStream in) {
-		try {
-			in.close();
-		} catch (Exception ignore) {
-		}
 	}
 	
 }

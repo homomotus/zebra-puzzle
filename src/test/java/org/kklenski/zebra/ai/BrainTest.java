@@ -78,8 +78,8 @@ public abstract class BrainTest {
 		rules.add(new Rule(SAME, new HouseProperty("smoke",	"Lucky strike"), new HouseProperty("drink", "Orange juice")));
 		rules.add(new Rule(SAME, new HouseProperty("smoke",	"Parliaments"), new HouseProperty("nationality", "Japanese")));
 		rules.add(new Rule(NEXT_TO, new HouseProperty("color", "Blue"),	new HouseProperty("nationality", "Norwegian")));
-		rules.add(new Rule(SAME, new HouseProperty("drink", "Water"), null));
-		rules.add(new Rule(SAME, new HouseProperty("pet", "Zebra"), null));
+		rules.add(new Rule(SAME, new HouseProperty("drink", "Water")));
+		rules.add(new Rule(SAME, new HouseProperty("pet", "Zebra")));
 		
 		return new Puzzle(rules, 5);
 	}

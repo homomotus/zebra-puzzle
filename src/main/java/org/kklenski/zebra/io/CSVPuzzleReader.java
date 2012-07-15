@@ -82,13 +82,14 @@ public class CSVPuzzleReader implements PuzzleReader {
 		int lineNum = 0;
 		while ((line = reader.readLine()) != null) {
 			lineNum++;
+			
 			String[] tokens = line.split(Character.toString(delimiter));
 			
 			AssociationType type;
 			try {
 				type = AssociationType.valueOf(tokens[0]);	
 			} catch (IllegalArgumentException e) {
-				throw new PuzzleFormatException(String.format("Unsupported association type encountered: '%s'", tokens[0]));
+				throw new PuzzleFormatException(String.format("Unsupported association type encountered: '%s' on line: %d", tokens[0], lineNum));
 			}
 			
 			HouseProperty prop1;
@@ -100,7 +101,7 @@ public class CSVPuzzleReader implements PuzzleReader {
 				prop1 = new HouseProperty(tokens[1], tokens[2]);
 				break;
 			default:
-				throw new PuzzleFormatException(String.format("Incorrect number of delimited values: %d in line: %d", tokens.length, lineNum));
+				throw new PuzzleFormatException(String.format("Incorrect number of delimited values: %d on line: %d", tokens.length, lineNum));
 			}
 			rules.add(new Rule(type, prop1, prop2));
 		}
