@@ -17,6 +17,6 @@ Note, to execute the instructions below you should have Git, Maven and Java inst
 PuzzleSolver reads puzzle definition in CSV format from standard input and streams solutions in the form of XML to standard output.
 
 Take a look at the samples:
-* samples/puzzle.csv - classic definition in CSV format 
-* samples/solutions.xsl - XSL that can be applied to result XML
-* samples/solutions.xml - solution to classic puzzle definition automatically rendered to HTML by most browsers
+* samples/puzzle.csv - classic definition in CSV format
+* samples/solutions.xsl - XSL that can be used to render result XML into HTML (works only for classic property set)
+* samples/solutions.xml - classic puzzle result XML with reference to XSL; will be automatically rendered to HTML by most browsers
