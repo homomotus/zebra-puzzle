@@ -10,4 +10,4 @@ Usage
     cd zebra-puzzle
     mvn clean install
     cd target\classes
-    java org.kklenski.zebra.Launcher < ..\..\src\main\resources\puzzle.csv > solutions.xml
+    java org.kklenski.zebra.PuzzleSolver < ..\..\samples\puzzle.csv > solutions.xml
