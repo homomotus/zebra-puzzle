@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="solutions.xsl"?>
+<solutions>
+	<solution>
+		<house color="Yellow" drink="Water" nationality="Norwegian" pet="Fox" position="1" smoke="Kools" />
+		<house color="Blue" drink="Tea" nationality="Ukrainian" pet="Horse"	position="2" smoke="Chesterfields" />
+		<house color="Red" drink="Milk" nationality="English" pet="Snails" position="3" smoke="Old gold" />
+		<house color="Ivory" drink="Orange juice" nationality="Spaniard" pet="Dog" position="4" smoke="Lucky strike" />
+		<house color="Green" drink="Coffee" nationality="Japanese" pet="Zebra" position="5" smoke="Parliaments" />
+	</solution>
+</solutions>
